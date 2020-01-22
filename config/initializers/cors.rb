@@ -8,4 +8,10 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       origins "https://nicktohzyu-tdlv5-front.netlify.com"
       resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
     end
+
+    allow do
+      origins "https://nicktohzyu-tdlv5-front.herokuapp.com"
+      resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    end
+    
   end
