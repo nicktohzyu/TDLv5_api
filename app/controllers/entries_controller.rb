@@ -3,10 +3,7 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :update, :destroy]
   def index
     @entries = Entry.where(user_id: @current_user.id)
-    # if(params[:tag])
-    #   @entries = @entries.tagged_with(params[:tag])
-    # end
-    render json: @entries
+    render json: @entries, include:['tags']
   end
   
   def show
@@ -37,7 +34,7 @@ class EntriesController < ApplicationController
   def destroy
     if @entry
       if @entry.destroy
-        render json: { message: 'Entry deleted.' }, status: 200
+        render json: { message: 'Entry deleted' }, status: 200
       else
         render json: { error: @entry.errors.full_messages }, status: 400
       end
