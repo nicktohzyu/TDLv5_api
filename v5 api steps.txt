@@ -17,4 +17,4 @@ rails g model User email password_digest name
 rails g model Entry content:text due_date:date user:references done:boolean
 rails g controller Entry
 
-rails g migration CreateTags content entry:references
+rails g scaffold Tags content entry:references
